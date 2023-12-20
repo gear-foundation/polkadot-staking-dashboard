@@ -173,7 +173,7 @@ export const APIProvider = ({ children, network }: APIProviderProps) => {
       newApi.consts.babe.epochDuration,
       newApi.consts.balances.existentialDeposit,
       newApi.consts.staking.historyDepth,
-      newApi.consts.fastUnstake.deposit,
+      // newApi.consts.fastUnstake.deposit,
       newApi.consts.nominationPools.palletId,
     ]);
 
@@ -214,11 +214,13 @@ export const APIProvider = ({ children, network }: APIProviderProps) => {
       ? new BigNumber(rmCommas(result[8].toString()))
       : new BigNumber(0);
 
-    const fastUnstakeDeposit = result[9]
-      ? new BigNumber(rmCommas(result[9].toString()))
-      : new BigNumber(0);
+    // const fastUnstakeDeposit = result[9]
+    //   ? new BigNumber(rmCommas(result[9].toString()))
+    //   : new BigNumber(0);
 
-    const poolsPalletId = result[10] ? result[10].toU8a() : new Uint8Array(0);
+    const fastUnstakeDeposit = BigNumber(0);
+
+    const poolsPalletId = result[9] ? result[9].toU8a() : new Uint8Array(0);
 
     setConsts({
       bondDuration,
