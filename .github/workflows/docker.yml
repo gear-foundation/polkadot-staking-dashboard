@@ -58,6 +58,6 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy to k8s
-        uses: sergeyfilyanin/kubectl-aws-eks@master
+        uses: kodermax/kubectl-aws-eks@main
         with:
           args: rollout restart deployment stg-cb-dashboard -n $KUBE_NAMESPACE
