@@ -17,7 +17,8 @@ export const NetworkList: Networks = {
       lightClient: WellKnownChain.polkadot,
       defaultRpcEndpoint: 'Parity',
       rpcEndpoints: {
-        Parity: 'wss://rpc.vara.network',
+        // TODO: remove after runtime upgrade
+        Parity: 'ws://localhost:9944',
       },
     },
     namespace: 'fe1b4c55fd4d668101126434206571a7',
