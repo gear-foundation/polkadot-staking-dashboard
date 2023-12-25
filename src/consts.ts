@@ -35,7 +35,7 @@ export const TipsThresholdMedium = 1200;
  */
 export const PluginsList: Plugin[] = [
   'subscan',
-  'binance_spot',
+  'coingecko',
   'tips',
   'polkawatch',
 ];

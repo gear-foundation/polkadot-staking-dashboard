@@ -59,7 +59,7 @@ export interface Network {
   };
   api: {
     unit: string;
-    priceTicker: string;
+    id: string;
   };
   params: Record<string, number>;
   defaultFeeReserve: number;
@@ -102,7 +102,7 @@ export type MaybeAddress = string | null;
 export type MaybeString = string | null;
 
 // list of available plugins.
-export type Plugin = 'subscan' | 'binance_spot' | 'tips' | 'polkawatch';
+export type Plugin = 'subscan' | 'coingecko' | 'tips' | 'polkawatch';
 
 // track the status of a syncing / fetching process.
 export type Sync = 'unsynced' | 'syncing' | 'synced';
