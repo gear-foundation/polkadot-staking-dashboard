@@ -33,9 +33,9 @@ export const Settings = () => {
           />
           {!DISABLE_FIAT && (
             <StatusButton
-              checked={plugins.includes('binance_spot')}
-              label={t('binanceApi')}
-              onClick={() => togglePlugin('binance_spot')}
+              checked={plugins.includes('coingecko')}
+              label={t('coingeckoApi')}
+              onClick={() => togglePlugin('coingecko')}
             />
           )}
 

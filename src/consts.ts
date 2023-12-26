@@ -35,7 +35,7 @@ export const TipsThresholdMedium = 1200;
  */
 export const PluginsList: Plugin[] = [
   'subscan',
-  'binance_spot',
+  'coingecko',
   'tips',
   'polkawatch',
 ];
@@ -64,9 +64,9 @@ export const MaxEraRewardPointsEras = 14;
  * Third party API keys and endpoints
  */
 export const ApiSubscanKey = 'd37149339f64775155a82a53f4253b27';
-export const EndpointPrice = 'https://api.binance.com/api/v3';
+export const EndpointPrice = 'https://api.coingecko.com/api/v3';
 export const ApiEndpoints = {
-  priceChange: `${EndpointPrice}/ticker/24hr?symbol=`,
+  priceChange: `${EndpointPrice}/simple/price`,
   subscanRewardSlash: '/api/v2/scan/account/reward_slash',
   subscanPoolRewards: '/api/scan/nomination_pool/rewards',
   subscanEraStat: '/api/scan/staking/era_stat',

@@ -62,7 +62,7 @@ export const NetworkList: Networks = {
     },
     api: {
       unit: 'VARA',
-      priceTicker: 'VARAUSDT',
+      id: 'vara-network',
     },
     params: {
       ...DefaultParams,

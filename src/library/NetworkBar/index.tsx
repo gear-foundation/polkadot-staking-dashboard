@@ -73,7 +73,7 @@ export const NetworkBar = () => {
         </section>
         <section>
           <div className="hide-small">
-            {plugins.includes('binance_spot') && (
+            {plugins.includes('coingecko') && (
               <>
                 <div className="stat">
                   <span
