@@ -18,7 +18,7 @@ export const NetworkList: Networks = {
       defaultRpcEndpoint: 'Parity',
       rpcEndpoints: {
         // TODO: remove after runtime upgrade
-        Parity: 'ws://localhost:9944',
+        Parity: 'wss://testnet.vara.network',
       },
     },
     namespace: 'fe1b4c55fd4d668101126434206571a7',
