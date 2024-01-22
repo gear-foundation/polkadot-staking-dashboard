@@ -9,8 +9,8 @@ import type { Plugin } from 'types';
  * Global Constants
  */
 export const AppVersion = '1.1.2';
-export const DappName = 'Polkadot Staking Dashboard';
-export const PolkadotUrl = 'https://polkadot.network/features/staking/';
+export const DappName = 'Vara Staking Dashboard';
+export const VaraUrl = 'https://wiki.vara.network/docs/staking/overview/';
 export const DefaultNetwork = 'vara';
 export const ManualSigners = ['ledger', 'vault'];
 /*
