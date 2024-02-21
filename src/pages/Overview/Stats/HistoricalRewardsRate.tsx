@@ -10,7 +10,7 @@ import { Text } from 'library/StatBoxList/Text';
 export const HistoricalRewardsRateStat = () => {
   const { t } = useTranslation('pages');
   const { metrics } = useNetworkMetrics();
-  const { inflation, stakedReturn } = useInflation();
+  const { stakedReturn } = useInflation();
   const { totalIssuance } = metrics;
 
   const value = `${
@@ -19,12 +19,14 @@ export const HistoricalRewardsRateStat = () => {
       : new BigNumber(stakedReturn).decimalPlaces(2).toFormat()
   }%`;
 
-  const secondaryValue =
-    totalIssuance.isZero() || stakedReturn === 0
-      ? undefined
-      : `/ ${new BigNumber(Math.max(0, stakedReturn - inflation))
-          .decimalPlaces(2)
-          .toFormat()}% ${t('overview.afterInflation')}`;
+  // const secondaryValue =
+  //   totalIssuance.isZero() || stakedReturn === 0
+  //     ? undefined
+  //     : `/ ${new BigNumber(Math.max(0, stakedReturn - inflation))
+  //         .decimalPlaces(2)
+  //         .toFormat()}% ${t('overview.afterInflation')}`;
+
+  const secondaryValue = undefined;
 
   const params = {
     label: t('overview.historicalRewardsRate'),
