@@ -9,6 +9,7 @@ import type { ExtensionInjected } from '@polkadot-cloud/react/types';
 declare global {
   interface Window {
     injectedWeb3?: Record<string, ExtensionInjected>;
+    opera?: boolean;
   }
 }
 
