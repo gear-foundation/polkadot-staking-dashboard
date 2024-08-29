@@ -4,7 +4,7 @@
 import {
   greaterThanZero,
   isNotZero,
-  rmCommas,
+  // rmCommas,
   setStateWithRef,
 } from '@w3ux/utils';
 import BigNumber from 'bignumber.js';
@@ -66,8 +66,8 @@ export const FastUnstakeProvider = ({ children }: { children: ReactNode }) => {
   const queueDepositRef = useRef(queueDeposit);
 
   // store fastUnstake head.
-  const [head, setHead] = useState<AnyApi>(null);
-  const headRef = useRef(head);
+  const [head] = useState<AnyApi>(null);
+  // const headRef = useRef(head);
 
   // store fastUnstake counter for queue.
   const [counterForQueue, setCounterForQueue] = useState<number | null>(null);
@@ -273,46 +273,44 @@ export const FastUnstakeProvider = ({ children }: { children: ReactNode }) => {
 
   // subscribe to fastUnstake queue
   const subscribeToFastUnstakeQueue = async () => {
-    if (!api) {
-      return;
-    }
-    const subscribeQueue = async (a: MaybeAddress) => {
-      const u = await api.query.fastUnstake.queue(a, (q: AnyApi) =>
-        setStateWithRef(
-          new BigNumber(rmCommas(q.unwrapOrDefault(0).toString())),
-          setqueueDeposit,
-          queueDepositRef
-        )
-      );
-      return u;
-    };
-    const subscribeHead = async () => {
-      const u = await api.query.fastUnstake.head((result: AnyApi) => {
-        const h = result.unwrapOrDefault(null).toHuman();
-        setStateWithRef(h, setHead, headRef);
-      });
-      return u;
-    };
-    const subscribeCounterForQueue = async () => {
-      const u = await api.query.fastUnstake.counterForQueue(
-        (result: AnyApi) => {
-          const c = result.toHuman();
-          setStateWithRef(c, setCounterForQueue, counterForQueueRef);
-        }
-      );
-      return u;
-    };
-
-    // Subscribe to queue + head.
-
-    // initiate subscription, add to unsubs.
-    await Promise.all([
-      subscribeQueue(activeAccount),
-      subscribeHead(),
-      subscribeCounterForQueue(),
-    ]).then((u) => {
-      unsubs.current = u;
-    });
+    // if (!api) {
+    //   return;
+    // }
+    // const subscribeQueue = async (a: MaybeAddress) => {
+    //   const u = await api.query.fastUnstake.queue(a, (q: AnyApi) =>
+    //     setStateWithRef(
+    //       new BigNumber(rmCommas(q.unwrapOrDefault(0).toString())),
+    //       setqueueDeposit,
+    //       queueDepositRef
+    //     )
+    //   );
+    //   return u;
+    // };
+    // const subscribeHead = async () => {
+    //   const u = await api.query.fastUnstake.head((result: AnyApi) => {
+    //     const h = result.unwrapOrDefault(null).toHuman();
+    //     setStateWithRef(h, setHead, headRef);
+    //   });
+    //   return u;
+    // };
+    // const subscribeCounterForQueue = async () => {
+    //   const u = await api.query.fastUnstake.counterForQueue(
+    //     (result: AnyApi) => {
+    //       const c = result.toHuman();
+    //       setStateWithRef(c, setCounterForQueue, counterForQueueRef);
+    //     }
+    //   );
+    //   return u;
+    // };
+    // // Subscribe to queue + head.
+    // // initiate subscription, add to unsubs.
+    // await Promise.all([
+    //   subscribeQueue(activeAccount),
+    //   subscribeHead(),
+    //   subscribeCounterForQueue(),
+    // ]).then((u) => {
+    //   unsubs.current = u;
+    // });
   };
 
   // gets any existing fast unstake metadata for an account.

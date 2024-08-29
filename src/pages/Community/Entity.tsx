@@ -25,7 +25,8 @@ export const Entity = () => {
   const { setActiveSection, activeItem } = useCommunitySections();
 
   const { name, validators: entityAllValidators } = activeItem;
-  const validators = entityAllValidators[network] ?? [];
+  const validators =
+    entityAllValidators[network as keyof typeof entityAllValidators] ?? [];
 
   // include validators that exist in `erasStakers`
   const [activeValidators, setActiveValidators] = useState<Validator[]>(

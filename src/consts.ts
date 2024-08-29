@@ -6,8 +6,8 @@ import { stringToU8a } from '@polkadot/util';
 /*
  * Global Constants
  */
-export const DappName = 'Polkadot Staking Dashboard';
-export const PolkadotUrl = 'https://polkadot.network/features/staking/';
+export const DappName = 'Vara Staking Dashboard';
+export const VaraUrl = 'https://wiki.vara.network/docs/staking/';
 export const ManualSigners = ['ledger', 'vault'];
 
 /*

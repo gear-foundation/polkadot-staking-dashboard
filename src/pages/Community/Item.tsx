@@ -30,7 +30,9 @@ export const Item = ({ item, actionable }: ItemProps) => {
     icon,
     validators: entityAllValidators,
   } = item;
-  const validatorCount = entityAllValidators[network]?.length ?? 0;
+  const validatorCount =
+    entityAllValidators[network as keyof typeof entityAllValidators]?.length ??
+    0;
 
   const { setActiveSection, setActiveItem, setScrollPos } =
     useCommunitySections();

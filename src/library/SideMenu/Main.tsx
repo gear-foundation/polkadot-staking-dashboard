@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { PageCategories, PagesConfig } from 'config/pages';
-import { PolkadotUrl } from 'consts';
+import { VaraUrl } from 'consts';
 import { useBonded } from 'contexts/Bonded';
 import { useSetup } from 'contexts/Setup';
 import type { SetupContextInterface } from 'contexts/Setup/types';
@@ -129,10 +129,10 @@ export const Main = () => {
     <>
       <LogoWrapper
         $minimised={sideMenuMinimised}
-        onClick={() => window.open(PolkadotUrl, '_blank')}
+        onClick={() => window.open(VaraUrl, '_blank')}
       >
         {sideMenuMinimised ? (
-          <networkData.brand.icon
+          <networkData.brand.inline.svg
             style={{ maxHeight: '100%', width: '2rem' }}
           />
         ) : (

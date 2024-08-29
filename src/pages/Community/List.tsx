@@ -16,12 +16,16 @@ export const List = () => {
   const { validatorCommunity } = useCommunity();
 
   const [entityItems, setEntityItems] = useState<ValidatorEntry[]>(
-    validatorCommunity.filter((v) => v.validators[network] !== undefined)
+    validatorCommunity.filter(
+      (v) => v.validators[network as keyof typeof v.validators] !== undefined
+    )
   );
 
   useEffect(() => {
     setEntityItems(
-      validatorCommunity.filter((v) => v.validators[network] !== undefined)
+      validatorCommunity.filter(
+        (v) => v.validators[network as keyof typeof v.validators] !== undefined
+      )
     );
   }, [network]);
 
