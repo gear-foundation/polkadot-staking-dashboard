@@ -76,7 +76,7 @@ export const NetworkList: Networks = {
     },
     api: {
       unit: 'VARA',
-      priceTicker: 'VARAUSDT',
+      id: 'vara-network',
     },
     defaultFeeReserve: 0.1,
     maxExposurePageSize: new BigNumber(512),

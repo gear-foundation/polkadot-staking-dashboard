@@ -71,7 +71,7 @@ export const usePrices = () => {
 
   // servie toggle
   useEffect(() => {
-    if (plugins.includes('binance_spot')) {
+    if (plugins.includes('coingecko')) {
       if (priceHandle) {
         initiatePriceInterval();
       }
