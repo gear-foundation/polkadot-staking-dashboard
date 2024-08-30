@@ -4,7 +4,9 @@
 import type { ReactNode } from 'react';
 import { createContext, useContext, useRef, useState } from 'react';
 import type { MaybeAddress } from 'types';
+import Keyring from '@polkadot/keyring';
 import { setStateWithRef } from '@w3ux/utils';
+import { NetworkList } from 'config/networks';
 import { useNetwork } from 'contexts/Network';
 import type { ActiveAccountsContextInterface, ActiveProxy } from './types';
 import { defaultActiveAccountsContext } from './defaults';
@@ -44,20 +46,32 @@ export const ActiveAccountsProvider = ({
     setStateWithRef(newActiveProxy, setActiveProxyState, activeProxyRef);
   };
 
+  const getVaraAddress = (value: string) => {
+    const keyring = new Keyring();
+
+    keyring.setSS58Format(NetworkList.vara.ss58);
+
+    return keyring.addFromAddress(value).address;
+  };
+
   // Setter for the active account.
   const setActiveAccount = (
     newActiveAccount: MaybeAddress,
     updateLocalStorage = true
   ) => {
+    const account = newActiveAccount
+      ? getVaraAddress(newActiveAccount)
+      : newActiveAccount;
+
     if (updateLocalStorage) {
-      if (newActiveAccount === null) {
+      if (account === null) {
         localStorage.removeItem(`${network}_active_account`);
       } else {
-        localStorage.setItem(`${network}_active_account`, newActiveAccount);
+        localStorage.setItem(`${network}_active_account`, account);
       }
     }
 
-    setStateWithRef(newActiveAccount, setActiveAccountState, activeAccountRef);
+    setStateWithRef(account, setActiveAccountState, activeAccountRef);
   };
 
   // Getter for the active account.
