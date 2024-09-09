@@ -3,7 +3,6 @@
 
 import type { AnyApi } from 'types';
 import type { ApiPromise } from '@polkadot/api';
-import type { AnyJson } from '@w3ux/types';
 
 export class IdentitiesController {
   static fetch = async (api: ApiPromise, addresses: string[]) => {
@@ -13,15 +12,19 @@ export class IdentitiesController {
         (identity) => identity.toHuman()
       );
 
+      // REVERTING #2090
+
       // Take identity data (first index) of results.
-      const data = result.map(
-        (resultArray: AnyJson | null) => resultArray?.[0] || null
-      );
+      // const data = result.map(
+      //   (resultArray: AnyJson | null) => resultArray?.[0] || null
+      // );
 
       return Object.fromEntries(
-        data
-          .map((key: string, index: number) => [addresses[index], key])
-          .filter(([, value]) => value !== null)
+        // data
+        //   .map((key: string, index: number) => [addresses[index], key])
+        //   .filter(([, value]) => value !== null)
+
+        result.map((k, i) => [addresses[i], k]).filter(([, v]) => v !== null)
       );
     };
 
@@ -49,16 +52,17 @@ export class IdentitiesController {
       ).map((superIdentity) => superIdentity.toHuman());
 
       // Take identity data (first index) of results.
-      const data = superIdentities.map(
-        (resultArray: AnyJson | null) => resultArray?.[0] || null
-      );
+      // const data = superIdentities.map(
+      //   (resultArray: AnyJson | null) => resultArray?.[0] || null
+      // );
 
       const supersWithIdentity = Object.fromEntries(
         Object.entries(supers).map(([k, v]: AnyApi, i) => [
           k,
           {
             ...v,
-            identity: data[i],
+            // identity: data[i],
+            identity: superIdentities[i],
           },
         ])
       );
