@@ -69,7 +69,7 @@ export class ApiController {
 
     await Promise.all([
       this.instances[network].initialize(type, rpcEndpoint),
-      this.instances[`people-${network}`].initialize('ws', 'Parity'),
+      this.instances[`people-${network}`].initialize('ws', rpcEndpoint),
     ]);
   }
 
