@@ -56,7 +56,7 @@ export const NetworkList: Networks = {
     },
     api: {
       unit: 'VARA',
-      priceTicker: 'VARAUSDT',
+      id: 'vara-network',
     },
     defaultFeeReserve: 0.1,
     maxExposurePageSize: new BigNumber(512),
@@ -68,7 +68,7 @@ export const SystemChainList: Record<string, SystemChain> = {
     name: 'people-vara',
     ss58: 0, // active account is not getting connected with a custom value
     units: 12,
-    unit: 'DOT',
+    unit: 'VARA',
     endpoints: {
       lightClient: 'people_vara', // NOTE: Currently not being used. TODO: Revise this and activate once People chain specs are available to use.
       rpcEndpoints: {

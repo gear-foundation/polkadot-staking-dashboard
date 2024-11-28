@@ -97,7 +97,7 @@ export interface Network {
   };
   api: {
     unit: string;
-    priceTicker: string;
+    id: string;
   };
   defaultFeeReserve: number;
   maxExposurePageSize: BigNumber;

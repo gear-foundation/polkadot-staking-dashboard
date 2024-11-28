@@ -8,31 +8,28 @@ export const useUnitPrice = () => {
   const { network } = useNetwork();
 
   const fetchUnitPrice = async () => {
-    const endpoint = `https://api.binance.com/api/v3/ticker/24hr?symbol=`;
+    const endpoint = `https://api.coingecko.com/api/v3/simple/price`;
 
-    const urls = [`${endpoint}${NetworkList[network].api.priceTicker}`];
+    const urls = [
+      `${endpoint}?ids=${NetworkList[network].api.id}&vs_currencies=usd&include_24hr_change=true`,
+    ];
 
     const responses = await Promise.all(
       urls.map((u) => fetch(u, { method: 'GET' }))
     );
-    const texts = await Promise.all(responses.map((res) => res.json()));
-    const newPrice = texts[0];
 
-    if (
-      newPrice.lastPrice !== undefined &&
-      newPrice.priceChangePercent !== undefined
-    ) {
-      const price: string = (Math.ceil(newPrice.lastPrice * 100) / 100).toFixed(
-        2
-      );
+    const texts = await Promise.all(responses.map((res) => res.json()));
+    const newPrice = texts[0][NetworkList[network].api.id];
+
+    if (newPrice.usd !== undefined && newPrice.usd_24h_change !== undefined) {
+      const price: string = (Math.ceil(newPrice.usd * 100) / 100).toFixed(2);
 
       return {
         lastPrice: price,
-        change: (Math.round(newPrice.priceChangePercent * 100) / 100).toFixed(
-          2
-        ),
+        change: (Math.round(newPrice.usd_24h_change * 100) / 100).toFixed(2),
       };
     }
+
     return null;
   };
 
