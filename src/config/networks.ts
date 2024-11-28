@@ -14,7 +14,7 @@ export const NetworkList: Networks = {
       lightClient: 'vara',
       defaultRpcEndpoint: 'Gear',
       rpcEndpoints: {
-        Gear: 'wss://rpc.vara.network',
+        Gear: 'wss://testnet.vara.network',
       },
     },
     colors: {
@@ -68,7 +68,7 @@ export const SystemChainList: Record<string, SystemChain> = {
     endpoints: {
       lightClient: 'people_vara', // NOTE: Currently not being used. TODO: Revise this and activate once People chain specs are available to use.
       rpcEndpoints: {
-        Gear: 'wss://rpc.vara.network',
+        Gear: 'wss://testnet.vara.network',
       },
     },
   },

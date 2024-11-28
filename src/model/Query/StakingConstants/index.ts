@@ -33,10 +33,11 @@ export class StakingConstants {
       api.consts.babe.epochDuration,
       api.consts.balances.existentialDeposit,
       api.consts.staking.historyDepth,
-      api.consts.fastUnstake.deposit,
+      // api.consts.fastUnstake.deposit,
+      Promise.resolve(0),
       api.consts.nominationPools.palletId,
       api.consts.staking.maxExposurePageSize,
-    ];
+    ] as const;
 
     const consts = await Promise.all(allPromises);
 

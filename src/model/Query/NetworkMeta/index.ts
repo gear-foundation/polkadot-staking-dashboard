@@ -18,9 +18,9 @@ export class NetworkMeta {
     const networkMeta = await api.queryMulti([
       // Network metrics.
       api.query.balances.totalIssuance,
-      api.query.auctions.auctionCounter,
-      api.query.paraSessionInfo.earliestStoredSession,
-      api.query.fastUnstake.erasToCheckPerBlock,
+      // api.query.auctions.auctionCounter,
+      // api.query.paraSessionInfo.earliestStoredSession,
+      // api.query.fastUnstake.erasToCheckPerBlock,
       api.query.staking.minimumActiveStake,
       // Nomination pool configs.
       api.query.nominationPools.counterForPoolMembers,
@@ -44,6 +44,15 @@ export class NetworkMeta {
       [api.query.staking.erasTotalStake, activeEra.index.toString()],
       api.query.staking.counterForNominators,
     ]);
+
+    // insert missing metrics
+    networkMeta.splice(
+      1,
+      0,
+      '0' as unknown as (typeof networkMeta)[number],
+      '0' as unknown as (typeof networkMeta)[number],
+      '0' as unknown as (typeof networkMeta)[number]
+    );
 
     // format optional configs to BigNumber or null.
     const maxPoolMembers = networkMeta[9].toHuman()
