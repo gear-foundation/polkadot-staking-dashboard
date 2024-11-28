@@ -7,7 +7,7 @@ import { useNetwork } from 'contexts/Network';
 import { Item } from './Item';
 import { ItemsWrapper } from './Wrappers';
 import { useCommunitySections } from './context';
-import type { ValidatorEntry } from '@w3ux/validator-assets';
+
 import { useCommunity } from 'contexts/Community';
 
 export const List = () => {
@@ -15,7 +15,7 @@ export const List = () => {
   const { scrollPos } = useCommunitySections();
   const { validatorCommunity } = useCommunity();
 
-  const [entityItems, setEntityItems] = useState<ValidatorEntry[]>(
+  const [entityItems, setEntityItems] = useState(
     validatorCommunity.filter((v) => v.validators[network] !== undefined)
   );
 
