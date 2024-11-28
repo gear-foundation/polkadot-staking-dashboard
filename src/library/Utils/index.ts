@@ -8,7 +8,7 @@ import type { TFunction } from 'i18next';
 
 // Return `planckToUnit` as a `BigNumber`.
 export const planckToUnitBn = (val: BigNumber, units: number): BigNumber =>
-  new BigNumber(planckToUnit(val.toString(), units));
+  new BigNumber(planckToUnit(val.toFixed(), units));
 
 // Converts a string to a BigNumber.
 export const stringToBn = (value: string): BigNumber =>
