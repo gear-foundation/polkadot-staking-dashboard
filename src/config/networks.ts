@@ -42,7 +42,7 @@ export const NetworkList: Networks = {
     },
     unit: 'VARA',
     units: 12,
-    ss58: 0, // active account is not getting connected with a custom value
+    ss58: 137, // active account should be formatted manually on initial connect
     brand: {
       icon: VaraIconSVG,
       token: VaraTokenSVG,
@@ -66,7 +66,7 @@ export const NetworkList: Networks = {
 export const SystemChainList: Record<string, SystemChain> = {
   'people-vara': {
     name: 'people-vara',
-    ss58: 0, // active account is not getting connected with a custom value
+    ss58: 137, // active account should be formatted manually on initial connect
     units: 12,
     unit: 'VARA',
     endpoints: {
