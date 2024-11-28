@@ -13,7 +13,7 @@ import type { NetworkName } from 'types';
 import { useOverlay } from 'kits/Overlay/Provider';
 import { useNetwork } from 'contexts/Network';
 import { useUi } from 'contexts/UI';
-import { usePrompt } from 'contexts/Prompt';
+// import { usePrompt } from 'contexts/Prompt';
 import BraveIconSVG from '../../img/brave-logo.svg?react';
 import {
   BraveWarning,
@@ -22,14 +22,14 @@ import {
   ContentWrapper,
   NetworkButton,
 } from './Wrapper';
-import { ProvidersPrompt } from './ProvidersPrompt';
+// import { ProvidersPrompt } from './ProvidersPrompt';
 import { ButtonTertiary } from 'kits/Buttons/ButtonTertiary';
 import { ModalPadding } from 'kits/Overlay/structure/ModalPadding';
 
 export const Networks = () => {
   const { t } = useTranslation('modals');
   const { isBraveBrowser } = useUi();
-  const { openPromptWith } = usePrompt();
+  // const { openPromptWith } = usePrompt();
   const { network, switchNetwork } = useNetwork();
   const { setModalStatus, setModalResize } = useOverlay().modal;
   const { connectionType, setConnectionType, rpcEndpoint } = useApi();
@@ -106,12 +106,12 @@ export const Networks = () => {
                 <p>{t('provider')}:</p>
                 <ButtonTertiary
                   text={rpcEndpoint}
-                  onClick={() => openPromptWith(<ProvidersPrompt />)}
+                  // onClick={() => openPromptWith(<ProvidersPrompt />)}
                   marginLeft
                 />
               </div>
             </div>
-            <div>
+            {/* <div>
               <ConnectionButton
                 $connected={isLightClient}
                 className="off"
@@ -125,7 +125,7 @@ export const Networks = () => {
                 <h3>{t('lightClient')}</h3>
                 {isLightClient && <h4 className="selected">{t('selected')}</h4>}
               </ConnectionButton>
-            </div>
+            </div> */}
           </ConnectionsWrapper>
 
           {isBraveBrowser ? (

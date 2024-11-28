@@ -9,16 +9,16 @@ import { useTranslation } from 'react-i18next';
 import { SideMenuMaximisedWidth, PageWidthMediumThreshold } from 'consts';
 import { useApi } from 'contexts/Api';
 import { useHelp } from 'contexts/Help';
-import { useTheme } from 'contexts/Themes';
+// import { useTheme } from 'contexts/Themes';
 import { useUi } from 'contexts/UI';
 import type { UIContextInterface } from 'contexts/UI/types';
 import CogOutlineSVG from 'img/cog-outline.svg?react';
-import ForumSVG from 'img/forum.svg?react';
+// import ForumSVG from 'img/forum.svg?react';
 import InfoSVG from 'img/info.svg?react';
-import LanguageSVG from 'img/language.svg?react';
+// import LanguageSVG from 'img/language.svg?react';
 import LogoGithubSVG from 'img/logo-github.svg?react';
-import MoonOutlineSVG from 'img/moon-outline.svg?react';
-import SunnyOutlineSVG from 'img/sunny-outline.svg?react';
+// import MoonOutlineSVG from 'img/moon-outline.svg?react';
+// import SunnyOutlineSVG from 'img/sunny-outline.svg?react';
 import { useOverlay } from 'kits/Overlay/Provider';
 import { useNetwork } from 'contexts/Network';
 import { Heading } from './Heading/Heading';
@@ -39,7 +39,7 @@ export const SideMenu = () => {
     userSideMenuMinimised,
     setUserSideMenuMinimised,
   }: UIContextInterface = useUi();
-  const { mode, toggleTheme } = useTheme();
+  // const { mode, toggleTheme } = useTheme();
   const { openModal } = useOverlay().modal;
   const { networkData, network } = useNetwork();
 
@@ -85,7 +85,7 @@ export const SideMenu = () => {
                 size: sideMenuMinimised ? '1.4em' : '1.2em',
               }}
             />
-            <Secondary
+            {/* <Secondary
               onClick={() => openModal({ key: 'GoToFeedback' })}
               name={t('support')}
               minimised={sideMenuMinimised}
@@ -93,7 +93,7 @@ export const SideMenu = () => {
                 Svg: ForumSVG,
                 size: sideMenuMinimised ? '1.4em' : '1.2em',
               }}
-            />
+            /> */}
 
             <Separator />
             <Heading title={t('network')} minimised={sideMenuMinimised} />
@@ -130,7 +130,7 @@ export const SideMenu = () => {
             type="button"
             onClick={() =>
               window.open(
-                'https://github.com/polkadot-cloud/polkadot-staking-dashboard',
+                'https://github.com/gear-foundation/polkadot-staking-dashboard',
                 '_blank'
               )
             }
@@ -145,7 +145,7 @@ export const SideMenu = () => {
           >
             <CogOutlineSVG width="1.3em" height="1.3em" />
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={() => openModal({ key: 'ChooseLanguage' })}
           >
@@ -167,7 +167,7 @@ export const SideMenu = () => {
             >
               <MoonOutlineSVG width="1.1em" height="1.1em" />
             </button>
-          )}
+          )} */}
         </section>
       </Wrapper>
     </Side>
