@@ -129,16 +129,15 @@ export const Main = () => {
     <>
       <LogoWrapper $minimised={sideMenuMinimised}>
         {sideMenuMinimised ? (
-          <networkData.brand.icon
+          <networkData.brand.inline.svg
             style={{ maxHeight: '100%', width: '1.8rem' }}
           />
         ) : (
           <>
-            <networkData.brand.icon
+            <networkData.brand.logo.svg
               style={{
                 maxHeight: '100%',
                 height: '100%',
-                width: '1.5rem',
               }}
             />
 

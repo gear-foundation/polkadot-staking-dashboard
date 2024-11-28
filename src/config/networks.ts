@@ -4,11 +4,12 @@
 import VaraIconSVG from 'img/vara_icon.svg?react';
 import VaraInlineSVG from 'img/vara_inline.svg?react';
 import VaraTokenSVG from 'config/tokens/svg/VARA.svg?react';
+import VaraLogoSVG from 'img/vara_logo.svg?react';
 import type { Networks, SystemChain } from 'types';
 import BigNumber from 'bignumber.js';
 
 export const NetworkList: Networks = {
-  polkadot: {
+  vara: {
     name: 'vara',
     endpoints: {
       lightClient: 'vara',
@@ -48,6 +49,9 @@ export const NetworkList: Networks = {
       inline: {
         svg: VaraInlineSVG,
         size: '0.96em',
+      },
+      logo: {
+        svg: VaraLogoSVG,
       },
     },
     api: {

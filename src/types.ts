@@ -89,6 +89,11 @@ export interface Network {
       >;
       size: string;
     };
+    logo: {
+      svg: FunctionComponent<
+        SVGProps<SVGSVGElement> & { title?: string | undefined }
+      >;
+    };
   };
   api: {
     unit: string;
