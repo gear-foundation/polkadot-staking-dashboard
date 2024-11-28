@@ -19,7 +19,7 @@ export const WalletConnectContext =
 export const useWalletConnect = () => useContext(WalletConnectContext);
 
 // `projectId` is configured on `https://cloud.walletconnect.com/`.
-const wcProjectId = 'dcb8a7c6d01ace818286c005f75d70b9';
+const wcProjectId = '54f1a7778ca92bbcf4bf10bff39fc994';
 
 export const WalletConnectProvider = ({
   children,
@@ -61,11 +61,11 @@ export const WalletConnectProvider = ({
     const provider = await UniversalProvider.init({
       projectId: wcProjectId,
       metadata: {
-        name: 'Polkadot Staking Dashboard',
+        name: 'Vara Staking Dashboard',
         description:
-          'A fully featured dashboard for Polkadot staking and nomination pools',
-        url: 'https://staking.polkadot.cloud/',
-        icons: ['https://staking.polkadot.cloud/img/wc-icon.png'],
+          'A fully featured dashboard for Vara staking and nomination pools',
+        url: 'https://staking.vara.network/',
+        icons: ['https://staking.vara-network.io/favicons/favicon.svg'],
       },
       relayUrl: 'wss://relay.walletconnect.com',
     });
