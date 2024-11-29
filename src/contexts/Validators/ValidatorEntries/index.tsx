@@ -256,7 +256,6 @@ export const ValidatorsProvider = ({ children }: { children: ReactNode }) => {
 
       if (!commission.isEqualTo(100)) {
         totalNonAllCommission = totalNonAllCommission.plus(commission);
-      } else {
         notFullCommissionCount++;
       }
 
