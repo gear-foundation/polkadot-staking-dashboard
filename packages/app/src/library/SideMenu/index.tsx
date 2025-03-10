@@ -10,14 +10,15 @@ import { useOnResize, useOutsideAlerter } from '@w3ux/hooks'
 import { capitalizeFirstLetter } from '@w3ux/utils'
 import DiscordSVG from 'assets/svg/brands/discord.svg?react'
 import LogoGithubSVG from 'assets/svg/brands/github.svg?react'
+import VaraInlineSVG from 'assets/svg/chains/varaInline.svg?react'
 import BookSVG from 'assets/svg/icons/book.svg?react'
-import CloudSVG from 'assets/svg/icons/cloud.svg?react'
 import CogSVG from 'assets/svg/icons/cog.svg?react'
 import EnvelopeSVG from 'assets/svg/icons/envelope.svg?react'
 import LanguageSVG from 'assets/svg/icons/language.svg?react'
 import LogoSVG from 'assets/svg/icons/logo.svg?react'
 import MoonOutlineSVG from 'assets/svg/icons/moon.svg?react'
 import SunnyOutlineSVG from 'assets/svg/icons/sun.svg?react'
+import VaraSVG from 'assets/svg/icons/vara.svg?react'
 import { PageWidthMediumThreshold } from 'consts'
 import { useApi } from 'contexts/Api'
 import { useHelp } from 'contexts/Help'
@@ -79,14 +80,13 @@ export const SideMenu = () => {
             onClick={() => setUserSideMenuMinimised(!userSideMenuMinimised)}
           >
             {sideMenuMinimised ? (
-              <CloudSVG style={{ maxHeight: '100%', width: '2rem' }} />
+              <VaraInlineSVG style={{ maxHeight: '100%', width: '2rem' }} />
             ) : (
               <>
-                <CloudSVG
+                <VaraSVG
                   style={{
                     maxHeight: '100%',
                     height: '100%',
-                    width: '1.55rem',
                   }}
                 />
                 <span>

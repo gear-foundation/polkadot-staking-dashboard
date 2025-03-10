@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffectIgnoreInitial } from '@w3ux/hooks'
 import { Odometer } from '@w3ux/react-odometer'
 import { capitalizeFirstLetter } from '@w3ux/utils'
-import CloudIconSVG from 'assets/svg/icons/cloud.svg?react'
+import VaraIconSVG from 'assets/svg/chains/varaIcon.svg?react'
 import BigNumber from 'bignumber.js'
 import { useNetwork } from 'contexts/Network'
 import { usePlugins } from 'contexts/Plugins'
@@ -48,7 +48,7 @@ export const MainFooter = () => {
   return (
     <Page.Footer>
       <Wrapper className="page-padding container-width">
-        <CloudIconSVG className="icon" />
+        <VaraIconSVG className="icon" />
         <Summary>
           <section>
             <p>

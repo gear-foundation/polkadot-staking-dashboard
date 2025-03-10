@@ -1,0 +1,27 @@
+.theme-vara {
+  --accent-color-primary-light: #00b387;
+  --accent-color-primary-dark: #00b387;
+
+  --accent-color-secondary-light: #552bbf;
+  --accent-color-secondary-dark: #6d39ee;
+
+  --accent-color-tertiary-light: rgb(221, 217, 231);
+  --accent-color-tertiary-dark: rgb(50, 38, 76);
+
+  --accent-color-stroke-light: #00b387;
+  --accent-color-stroke-dark: #00b387;
+
+  --accent-color-transparent-light: rgb(211 48 121 / 5%);
+  --accent-color-transparent-dark: rgb(211 48 121 / 5%);
+
+  --accent-color-pending-light: rgb(0 179 135 / 50%);
+  --accent-color-pending-dark: rgb(0 179 135 / 50%);
+
+  --gradient-background: linear-gradient(
+    180deg,
+    #f1f0f0 0%,
+    #f1f0f0 100px,
+    #e8e8e8 80%,
+    #eafdf78c 100%
+  ) !important; /* overriding theme.scss */
+}
