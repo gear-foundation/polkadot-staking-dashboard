@@ -8,7 +8,6 @@ import type { NetworkId } from 'common-types'
 import { NetworkList } from 'config/networks'
 import { useApi } from 'contexts/Api'
 import { useNetwork } from 'contexts/Network'
-import { usePrompt } from 'contexts/Prompt'
 import { useUi } from 'contexts/UI'
 import { Title } from 'library/Modal/Title'
 import { useEffect } from 'react'
@@ -16,7 +15,6 @@ import { useTranslation } from 'react-i18next'
 import { ButtonTertiary } from 'ui-buttons'
 import { Padding } from 'ui-core/modal'
 import { useOverlay } from 'ui-overlay'
-import { ProvidersPrompt } from './ProvidersPrompt'
 import {
   ConnectionButton,
   ConnectionsWrapper,
@@ -27,7 +25,6 @@ import {
 export const Networks = () => {
   const { t } = useTranslation('modals')
   const { isBraveBrowser } = useUi()
-  const { openPromptWith } = usePrompt()
   const { network, switchNetwork } = useNetwork()
   const { setModalStatus, setModalResize } = useOverlay().modal
   const { connectionType, setConnectionType, rpcEndpoint } = useApi()
@@ -84,7 +81,7 @@ export const Networks = () => {
           </div>
           <h4>{t('connectionType')}</h4>
           <ConnectionsWrapper>
-            <div>
+            {/* <div>
               <ConnectionButton
                 $connected={isLightClient}
                 className="off"
@@ -98,7 +95,7 @@ export const Networks = () => {
                 <h3>{t('lightClient')}</h3>
                 {isLightClient && <h4 className="selected">{t('selected')}</h4>}
               </ConnectionButton>
-            </div>
+            </div> */}
             <div>
               <ConnectionButton
                 $connected={!isLightClient}
@@ -119,7 +116,7 @@ export const Networks = () => {
                 <p>{t('provider')}:</p>
                 <ButtonTertiary
                   text={rpcEndpoint}
-                  onClick={() => openPromptWith(<ProvidersPrompt />)}
+                  // onClick={() => openPromptWith(<ProvidersPrompt />)}
                   marginLeft
                 />
               </div>

@@ -52,9 +52,8 @@ export const APIProvider = ({ children, network }: APIProviderProps) => {
     useState<ApiStatus>('disconnected')
 
   // Store whether light client is active
-  const [connectionType, setConnectionTypeState] = useState<ConnectionType>(
-    localStorage.getItem('useWebsocket') ? 'ws' : 'sc'
-  )
+  const [connectionType, setConnectionTypeState] =
+    useState<ConnectionType>('ws')
   const connectionTypeRef = useRef(connectionType)
 
   // Whether this context has initialised

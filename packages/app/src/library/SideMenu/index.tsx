@@ -13,17 +13,12 @@ import LogoGithubSVG from 'assets/svg/brands/github.svg?react'
 import VaraInlineSVG from 'assets/svg/chains/varaInline.svg?react'
 import BookSVG from 'assets/svg/icons/book.svg?react'
 import CogSVG from 'assets/svg/icons/cog.svg?react'
-import EnvelopeSVG from 'assets/svg/icons/envelope.svg?react'
-import LanguageSVG from 'assets/svg/icons/language.svg?react'
 import LogoSVG from 'assets/svg/icons/logo.svg?react'
-import MoonOutlineSVG from 'assets/svg/icons/moon.svg?react'
-import SunnyOutlineSVG from 'assets/svg/icons/sun.svg?react'
 import VaraSVG from 'assets/svg/icons/vara.svg?react'
 import { PageWidthMediumThreshold } from 'consts'
 import { useApi } from 'contexts/Api'
 import { useHelp } from 'contexts/Help'
 import { useNetwork } from 'contexts/Network'
-import { useTheme } from 'contexts/Themes'
 import { useUi } from 'contexts/UI'
 import type { UIContextInterface } from 'contexts/UI/types'
 import { useRef } from 'react'
@@ -46,7 +41,7 @@ export const SideMenu = () => {
     userSideMenuMinimised,
     setUserSideMenuMinimised,
   }: UIContextInterface = useUi()
-  const { mode, toggleTheme } = useTheme()
+  // const { mode, toggleTheme } = useTheme()
   const { openModal } = useOverlay().modal
   const { networkData, network } = useNetwork()
 
@@ -141,7 +136,7 @@ export const SideMenu = () => {
                 size: sideMenuMinimised ? '1.2em' : '1em',
               }}
             />
-            <Secondary
+            {/* <Secondary
               onClick={() => openModal({ key: 'MailSupport', size: 'sm' })}
               name={t('email', { ns: 'app' })}
               minimised={sideMenuMinimised}
@@ -149,7 +144,7 @@ export const SideMenu = () => {
                 Svg: EnvelopeSVG,
                 size: sideMenuMinimised ? '1.05em' : '0.9em',
               }}
-            />
+            /> */}
           </div>
         </section>
         <section>
@@ -157,7 +152,7 @@ export const SideMenu = () => {
             type="button"
             onClick={() =>
               window.open(
-                'https://github.com/polkadot-cloud/polkadot-staking-dashboard',
+                'https://github.com/gear-foundation/polkadot-staking-dashboard',
                 '_blank'
               )
             }
@@ -172,7 +167,7 @@ export const SideMenu = () => {
           >
             <CogSVG width="1.3em" height="1.3em" />
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={() => openModal({ key: 'ChooseLanguage' })}
           >
@@ -194,7 +189,7 @@ export const SideMenu = () => {
             >
               <MoonOutlineSVG width="1.1em" height="1.1em" />
             </button>
-          )}
+          )} */}
         </section>
       </Wrapper>
     </Page.Side>

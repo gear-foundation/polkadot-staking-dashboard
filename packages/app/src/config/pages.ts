@@ -3,7 +3,7 @@
 
 import type { PageCategoryItems, PagesConfigItems } from 'common-types'
 import { Nominate } from 'pages/Nominate'
-import { Operators } from 'pages/Operators'
+// import { Operators } from 'pages/Operators'
 import { Overview } from 'pages/Overview'
 import { Pools } from 'pages/Pools'
 import { Rewards } from 'pages/Rewards'
@@ -66,12 +66,12 @@ export const PagesConfig: PagesConfigItems = [
     Entry: Validators,
     lottie: 'view',
   },
-  {
-    category: 3,
-    key: 'operators',
-    uri: `${BASE_URL}operators`,
-    hash: '/operators',
-    Entry: Operators,
-    lottie: 'label',
-  },
+  // {
+  //   category: 3,
+  //   key: 'operators',
+  //   uri: `${BASE_URL}operators`,
+  //   hash: '/operators',
+  //   Entry: Operators,
+  //   lottie: 'label',
+  // },
 ]

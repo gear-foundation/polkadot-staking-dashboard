@@ -6,7 +6,7 @@
  */
 export const DappName = 'Vara Staking'
 export const ManualSigners = ['ledger', 'vault', 'wallet_connect']
-export const DiscordSupportUrl = 'https://discord.gg/QY7CSSJm3D'
+export const DiscordSupportUrl = 'https://discord.gg/x8ZeSy6S6K'
 export const MailSupportAddress = 'staking@polkadot.cloud'
 
 /*
