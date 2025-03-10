@@ -28,25 +28,25 @@ export class NetworkMetrics implements Unsubscribable {
         const bestOrFinalized = 'best'
         const sub = combineLatest([
           api.query.Balances.TotalIssuance.watchValue(bestOrFinalized),
-          api.query.Auctions.AuctionCounter.watchValue(bestOrFinalized),
-          api.query.ParaSessionInfo.EarliestStoredSession.watchValue(
-            bestOrFinalized
-          ),
-          api.query.FastUnstake.ErasToCheckPerBlock.watchValue(bestOrFinalized),
+          // api.query.Auctions.AuctionCounter.watchValue(bestOrFinalized),
+          // api.query.ParaSessionInfo.EarliestStoredSession.watchValue(
+          //   bestOrFinalized
+          // ),
+          // api.query.FastUnstake.ErasToCheckPerBlock.watchValue(bestOrFinalized),
           api.query.Staking.MinimumActiveStake.watchValue(bestOrFinalized),
         ]).subscribe(
           ([
             totalIssuance,
-            auctionCounter,
-            earliestStoredSession,
-            erasToCheckPerBlock,
+            // auctionCounter,
+            // earliestStoredSession,
+            // erasToCheckPerBlock,
             minimumActiveStake,
           ]) => {
             const networkMetrics = {
               totalIssuance: new BigNumber(totalIssuance.toString()),
-              auctionCounter: new BigNumber(auctionCounter),
-              earliestStoredSession: new BigNumber(earliestStoredSession),
-              fastUnstakeErasToCheckPerBlock: Number(erasToCheckPerBlock),
+              auctionCounter: new BigNumber(0),
+              earliestStoredSession: new BigNumber(0),
+              fastUnstakeErasToCheckPerBlock: 0,
               minimumActiveStake: new BigNumber(minimumActiveStake.toString()),
             }
 

@@ -1,15 +1,15 @@
 // Copyright 2025 @polkadot-cloud/polkadot-staking-dashboard authors & contributors
 // SPDX-License-Identifier: GPL-3.0-only
 
-import { FastUnstakeConfig } from 'api/subscribe/fastUnstakeConfig'
+// import { FastUnstakeConfig } from 'api/subscribe/fastUnstakeConfig'
 import type { FastUnstakeHead } from 'api/subscribe/fastUnstakeConfig/types'
-import { FastUnstakeQueue } from 'api/subscribe/fastUnstakeQueue'
+// import { FastUnstakeQueue } from 'api/subscribe/fastUnstakeQueue'
 import BigNumber from 'bignumber.js'
-import { useActiveAccounts } from 'contexts/ActiveAccounts'
-import { useApi } from 'contexts/Api'
+// import { useActiveAccounts } from 'contexts/ActiveAccounts'
+// import { useApi } from 'contexts/Api'
 import { useNetwork } from 'contexts/Network'
-import { Apis } from 'controllers/Apis'
-import { Subscriptions } from 'controllers/Subscriptions'
+// import { Apis } from 'controllers/Apis'
+// import { Subscriptions } from 'controllers/Subscriptions'
 import { isCustomEvent } from 'controllers/utils'
 import type { FastUnstakeResult } from 'plugin-staking-api/types'
 import type { ReactNode } from 'react'
@@ -28,9 +28,9 @@ export const FastUnstakeContext = createContext<FastUnstakeContextInterface>(
 export const useFastUnstake = () => useContext(FastUnstakeContext)
 
 export const FastUnstakeProvider = ({ children }: { children: ReactNode }) => {
-  const { isReady } = useApi()
+  // const { isReady } = useApi()
   const { network } = useNetwork()
-  const { activeAccount } = useActiveAccounts()
+  // const { activeAccount } = useActiveAccounts()
 
   // Store fast unstake status
   const [fastUnstakeStatus, setFastUnstakeStatus] =
@@ -46,20 +46,20 @@ export const FastUnstakeProvider = ({ children }: { children: ReactNode }) => {
   const [counterForQueue, setCounterForQueue] = useState<number | undefined>()
 
   // Reset state on active account change
-  useEffect(() => {
-    // Reset fast unstake managment state
-    setQueueDeposit(undefined)
-    // Re-subscribe to fast unstake queue
-    Subscriptions.remove(network, 'fastUnstakeQueue')
+  // useEffect(() => {
+  //   // Reset fast unstake managment state
+  //   setQueueDeposit(undefined)
+  //   // Re-subscribe to fast unstake queue
+  //   Subscriptions.remove(network, 'fastUnstakeQueue')
 
-    if (activeAccount) {
-      Subscriptions.set(
-        network,
-        'fastUnstakeQueue',
-        new FastUnstakeQueue(network, activeAccount)
-      )
-    }
-  }, [activeAccount])
+  //   if (activeAccount) {
+  //     Subscriptions.set(
+  //       network,
+  //       'fastUnstakeQueue',
+  //       new FastUnstakeQueue(network, activeAccount)
+  //     )
+  //   }
+  // }, [activeAccount])
 
   // Reset state on network change
   useEffect(() => {
@@ -68,23 +68,23 @@ export const FastUnstakeProvider = ({ children }: { children: ReactNode }) => {
   }, [network])
 
   // Subscribe to fast unstake queue as soon as api is ready
-  useEffect(() => {
-    if (isReady) {
-      subscribeToFastUnstakeMeta()
-    }
-  }, [isReady])
+  // useEffect(() => {
+  //   if (isReady) {
+  //     subscribeToFastUnstakeMeta()
+  //   }
+  // }, [isReady])
 
-  const subscribeToFastUnstakeMeta = async () => {
-    const api = Apis.getApi(network)
-    if (!api) {
-      return
-    }
-    Subscriptions.set(
-      network,
-      'fastUnstakeMeta',
-      new FastUnstakeConfig(network)
-    )
-  }
+  // const subscribeToFastUnstakeMeta = async () => {
+  //   const api = Apis.getApi(network)
+  //   if (!api) {
+  //     return
+  //   }
+  //   Subscriptions.set(
+  //     network,
+  //     'fastUnstakeMeta',
+  //     new FastUnstakeConfig(network)
+  //   )
+  // }
 
   const handleNewFastUnstakeConfig = (e: Event) => {
     if (isCustomEvent(e)) {

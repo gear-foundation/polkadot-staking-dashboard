@@ -19,9 +19,9 @@ export class NetworkMeta extends Base {
       await this.unsafeApi.query.Balances.TotalIssuance.getValue(at)
 
     const [
-      auctionCounter,
-      earliestStoredSession,
-      erasToCheckPerBlock,
+      // auctionCounter,
+      // earliestStoredSession,
+      // erasToCheckPerBlock,
       minimumActiveStake,
       counterForPoolMembers,
       counterForBondedPools,
@@ -42,9 +42,9 @@ export class NetworkMeta extends Base {
       minNominatorBond,
       activeEraErasTotalStake,
     ] = await Promise.all([
-      this.unsafeApi.query.Auctions.AuctionCounter.getValue(at),
-      this.unsafeApi.query.ParaSessionInfo.EarliestStoredSession.getValue(at),
-      this.unsafeApi.query.FastUnstake.ErasToCheckPerBlock.getValue(at),
+      // this.unsafeApi.query.Auctions.AuctionCounter.getValue(at),
+      // this.unsafeApi.query.ParaSessionInfo.EarliestStoredSession.getValue(at),
+      // this.unsafeApi.query.FastUnstake.ErasToCheckPerBlock.getValue(at),
       this.unsafeApi.query.Staking.MinimumActiveStake.getValue(at),
       this.unsafeApi.query.NominationPools.CounterForPoolMembers.getValue(at),
       this.unsafeApi.query.NominationPools.CounterForBondedPools.getValue(at),
@@ -96,9 +96,9 @@ export class NetworkMeta extends Base {
     return {
       networkMetrics: {
         totalIssuance: new BigNumber(totalIssuance.toString()),
-        auctionCounter: new BigNumber(auctionCounter.toString()),
-        earliestStoredSession: new BigNumber(earliestStoredSession.toString()),
-        fastUnstakeErasToCheckPerBlock: Number(erasToCheckPerBlock.toString()),
+        auctionCounter: new BigNumber(0),
+        earliestStoredSession: new BigNumber(0),
+        fastUnstakeErasToCheckPerBlock: 0,
         minimumActiveStake: new BigNumber(minimumActiveStake.toString()),
       },
       poolsConfig: {
