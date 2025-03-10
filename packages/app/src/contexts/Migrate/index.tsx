@@ -23,9 +23,9 @@ export const MigrateProvider = ({ children }: { children: ReactNode }) => {
   // Removes local era stakers data and locale data
   const removeLocalErasAndLocales = () => {
     // Remove local exposure and validator data
-    localStorage.removeItem('polkadot_validators')
-    localStorage.removeItem('polkadot_exposures')
-    localStorage.removeItem('polkadot_era_exposures')
+    localStorage.removeItem('vara_validators')
+    localStorage.removeItem('vara_exposures')
+    localStorage.removeItem('vara_era_exposures')
 
     localStorage.removeItem('kusama_validators')
     localStorage.removeItem('kusama_exposures')
@@ -46,7 +46,7 @@ export const MigrateProvider = ({ children }: { children: ReactNode }) => {
         // Added in 1.9.0
         //
         // Remove local historical era point data
-        localStorage.removeItem('polkadot_era_reward_points')
+        localStorage.removeItem('vara_era_reward_points')
         localStorage.removeItem('kusama_era_reward_points')
         localStorage.removeItem('westend_era_reward_points')
 
