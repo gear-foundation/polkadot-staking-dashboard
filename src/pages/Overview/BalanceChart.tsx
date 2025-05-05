@@ -56,7 +56,7 @@ export const BalanceChart = () => {
   );
   // Convert balance to fiat value.
   const freeFiat = totalBalance.multipliedBy(
-    new BigNumber(prices.lastPrice).decimalPlaces(2)
+    new BigNumber(prices.lastPrice).decimalPlaces(3)
   );
 
   // Total funds nominating.
