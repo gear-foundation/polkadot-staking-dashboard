@@ -45,7 +45,7 @@ export const TransferOptionsProvider = ({
   // `BalancesController`.
   const getTransferOptions = (address: MaybeAddress): TransferOptions => {
     const { maxLock } = getLocks(address);
-    const { free, frozen } = getBalance(address);
+    const { free } = getBalance(address);
     const { active, total, unlocking } = getLedger({ stash: address });
 
     // Calculate a forced amount of free balance that needs to be reserved to keep the account
@@ -59,12 +59,12 @@ export const TransferOptionsProvider = ({
     );
     // Free balance that can be transferred.
     const transferrableBalance = BigNumber.max(
-      freeMinusReserve.minus(frozen),
+      freeMinusReserve.minus(maxLock),
       0
     );
     // Free balance to pay for tx fees. Does not factor `feeReserve`.
     const balanceTxFees = BigNumber.max(
-      free.minus(edReserved).minus(frozen),
+      free.minus(edReserved).minus(maxLock),
       0
     );
     // Total amount unlocking and unlocked.
