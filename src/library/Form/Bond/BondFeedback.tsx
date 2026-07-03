@@ -49,7 +49,7 @@ export const BondFeedback = ({
   const availableBalance =
     bondFor === 'nominator'
       ? allTransferOptions.nominate.totalAdditionalBond
-      : allTransferOptions.transferrableBalance;
+      : allTransferOptions.pool.totalPossibleBond;
 
   // the default bond balance. If we are bonding, subtract tx fees from bond amount.
   const freeToBond = !disableTxFeeUpdate

@@ -39,8 +39,13 @@ export const ManageBond = () => {
 
   const allTransferOptions = getTransferOptions(activeAccount);
   const {
-    pool: { active, totalUnlocking, totalUnlocked, totalUnlockChunks },
-    transferrableBalance,
+    pool: {
+      active,
+      totalUnlocking,
+      totalUnlocked,
+      totalUnlockChunks,
+      totalPossibleBond,
+    },
   } = allTransferOptions;
 
   const { state } = activePool?.bondedPool || {};
@@ -123,7 +128,7 @@ export const ManageBond = () => {
         active={planckToUnitBn(active, units)}
         unlocking={planckToUnitBn(totalUnlocking, units)}
         unlocked={planckToUnitBn(totalUnlocked, units)}
-        free={planckToUnitBn(transferrableBalance, units)}
+        free={planckToUnitBn(totalPossibleBond, units)}
         inactive={active.isZero()}
       />
     </>
