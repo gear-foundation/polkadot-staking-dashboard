@@ -1,10 +1,6 @@
-FROM node:22-bookworm-slim AS builder
+FROM node:24-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS builder
 
 WORKDIR /app
-
-RUN apt-get update \
- && apt-get install -y --no-install-recommends git ca-certificates \
- && rm -rf /var/lib/apt/lists/*
 
 RUN corepack enable
 
@@ -17,8 +13,12 @@ COPY . .
 RUN yarn build
 
 # --------------------------------------------------
-FROM nginx:1.27-alpine AS runtime
+FROM nginxinc/nginx-unprivileged:1.31.7-alpine-slim@sha256:a8cb0f33d51fa107c96fd2bd3a71aaf564ec131e9d2bdf8700944f0ed8b170d7 AS runtime
+
+USER root
+RUN apk upgrade --no-cache
+USER 101
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 8080
