@@ -30,6 +30,7 @@ jobs:
     with:
       app: vara-staking-dashboard
       env: ${{ inputs.env }}
+      cleanup_enabled: false
       components: |
         - name: main
           docker_registry: ghcr.io/gear-foundation/vara-staking-dashboard

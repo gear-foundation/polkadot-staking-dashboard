@@ -1,24 +1,8 @@
-FROM node:24-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS builder
+FROM ghcr.io/gear-foundation/vara-staking-dashboard:vara-staking-dashboard-2026.06.01_17.17_main_2ba7374@sha256:64bea13e92721bca4ff83c48c096cb2083a0dbafaaf00ae797eb6c3a3e205782 AS build
 
-WORKDIR /app
+FROM public.ecr.aws/nginx/nginx-unprivileged:1.31.9-alpine-slim@sha256:75e85a09b0f25bd46d49a9fd85589ffa70b0459c8ed5ee0dc6596fd642e1f829
 
-RUN corepack enable
-
-COPY .yarnrc.yml package.json yarn.lock ./
-COPY .yarn/ ./.yarn/
-
-RUN yarn install --immutable
-
-COPY . .
-RUN yarn build
-
-# --------------------------------------------------
-FROM nginxinc/nginx-unprivileged:1.31.7-alpine-slim@sha256:a8cb0f33d51fa107c96fd2bd3a71aaf564ec131e9d2bdf8700944f0ed8b170d7 AS runtime
-
-USER root
-RUN apk upgrade --no-cache
-USER 101
-
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/share/nginx/html /usr/share/nginx/html
 
 EXPOSE 8080
