@@ -34,6 +34,3 @@ jobs:
       components: |
         - name: main
           docker_registry: ghcr.io/gear-foundation/vara-staking-dashboard
-    secrets:
-      CHARTS_REPO_TOKEN: ${{ secrets.CHARTS_REPO_TOKEN }}
-      ARGOCD_AUTH_TOKEN: ${{ secrets.ARGOCD_AUTH_TOKEN }}
