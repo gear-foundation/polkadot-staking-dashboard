@@ -4,6 +4,7 @@
 import BigNumber from 'bignumber.js';
 import { useTranslation } from 'react-i18next';
 import { BarSegment } from 'library/BarChart/BarSegment';
+import { BarSegmentShowLabelThreshold } from 'library/BarChart/defaults';
 import { LegendItem } from 'library/BarChart/LegendItem';
 import { Bar, BarChartWrapper, Legend } from 'library/BarChart/Wrappers';
 import { useNetwork } from 'contexts/Network';
@@ -71,7 +72,15 @@ export const BondedChart = ({
         ) : null}
 
         {totalUnlocking.plus(active).isGreaterThan(0) ? (
-          <LegendItem dataClass="d4" label={t('free')} />
+          <LegendItem
+            dataClass="d4"
+            label={
+              freeToBond.isGreaterThan(0) &&
+              graphFree.isLessThan(BarSegmentShowLabelThreshold)
+                ? `${t('free')}: ${freeToBond.toFormat()} ${unit}`
+                : t('free')
+            }
+          />
         ) : null}
       </Legend>
       <Bar>

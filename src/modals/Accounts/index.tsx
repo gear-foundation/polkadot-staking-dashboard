@@ -57,10 +57,11 @@ export const Accounts = () => {
     // Get amount required for existential deposit.
     const edReserved = getEdReserved(address, existentialDeposit);
     // Gets actual balance numbers.
-    const { free, frozen } = getBalance(address);
-    // Minus reserves and frozen balance from free to get transferrable.
+    const { free } = getBalance(address);
+    const { maxLock } = getLocks(address);
+    // Minus reserves and locked balance from free to get transferrable.
     return BigNumber.max(
-      free.minus(edReserved).minus(feeReserve).minus(frozen),
+      free.minus(edReserved).minus(feeReserve).minus(maxLock),
       0
     );
   };

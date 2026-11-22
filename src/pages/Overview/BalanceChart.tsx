@@ -112,7 +112,9 @@ export const BalanceChart = () => {
   let fundsReserved = planckToUnitBn(edReserved.plus(feeReserve), units);
 
   const fundsFree = planckToUnitBn(
-    BigNumber.max(allTransferOptions.freeBalance.minus(fundsLockedPlank), 0),
+    inPool.isGreaterThan(0)
+      ? poolBondOpions.totalPossibleBond
+      : allTransferOptions.transferrableBalance,
     units
   );
 

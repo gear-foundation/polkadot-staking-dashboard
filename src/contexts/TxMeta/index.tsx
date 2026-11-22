@@ -73,7 +73,7 @@ export const TxMetaProvider = ({ children }: { children: ReactNode }) => {
   const pendingNoncesRef = useRef(pendingNonces);
 
   // Listen to balance updates for the tx sender.
-  const { getBalance, getEdReserved } = useActiveBalances({
+  const { getBalance, getEdReserved, getLocks } = useActiveBalances({
     accounts: [sender],
   });
 
@@ -158,8 +158,9 @@ export const TxMetaProvider = ({ children }: { children: ReactNode }) => {
   const senderBalances = getBalance(sender);
   useEffectIgnoreInitial(() => {
     const edReserved = getEdReserved(sender, existentialDeposit);
-    const { free, frozen } = senderBalances;
-    const balanceforTxFees = free.minus(edReserved).minus(frozen);
+    const { free } = senderBalances;
+    const { maxLock } = getLocks(sender);
+    const balanceforTxFees = free.minus(edReserved).minus(maxLock);
 
     setNotEnoughFunds(balanceforTxFees.minus(txFees).isLessThan(0));
   }, [txFees, sender, senderBalances]);

@@ -33,7 +33,7 @@ export const Bond = () => {
   const { activeAccount } = useActiveAccounts();
   const { pendingPoolRewards } = useActivePool();
   const { getSignerWarnings } = useSignerWarnings();
-  const { feeReserve, getTransferOptions } = useTransferOptions();
+  const { getTransferOptions } = useTransferOptions();
   const {
     setModalStatus,
     config: { options },
@@ -43,13 +43,12 @@ export const Bond = () => {
   const { bondFor } = options;
   const isStaking = bondFor === 'nominator';
   const isPooling = bondFor === 'pool';
-  const { nominate, transferrableBalance } = getTransferOptions(activeAccount);
+  const { nominate, pool } = getTransferOptions(activeAccount);
 
   const freeToBond = planckToUnitBn(
-    (bondFor === 'nominator'
+    bondFor === 'nominator'
       ? nominate.totalAdditionalBond
-      : transferrableBalance
-    ).minus(feeReserve),
+      : pool.totalPossibleBond,
     units
   );
 
